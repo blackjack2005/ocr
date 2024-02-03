@@ -1,0 +1,13 @@
+设置应用默认凭据
+安装并初始化 gcloud CLI。https://cloud.google.com/sdk/docs/install?hl=zh-cn
+
+GoogleCloudSDKInstaller.exe
+https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe?hl=zh-cn
+
+您正在免費試用
+https://console.cloud.google.com/welcome/new?hl=zh-tw&project=my-first-ocr-392012
+
+gcloud auth application-default login
+
+gcloud ml vision detect-text 20220628_094000080_iOS.png
+gcloud ml vision detect-text 20230404_084657661_iOS.png
