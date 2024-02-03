@@ -27,9 +27,6 @@ fs.readdir(srcDir, async(e, files) =>{
     if (e) {
         return;
     }
-    //files.forEach(async f=>{
-    //    await doit(baseDir+f);
-    //});
     let outf = fs.createWriteStream("..\\sample5.csv");
     console.log(`${files.length} files to go.`);
     //outf.write("關卡,分數,File,Date,Time\n");
