@@ -16,9 +16,9 @@ async function doit(base, fns, idx, outf) {
     //console.log('Text:');
     //text.forEach(text => console.log(text.description));
     let ary = text[0].description.split("\n");
-    console.log(`[${idx+1}/${fns.length}] ${ary[0]}, ${ary[1]}, ${fns[idx]} done`);
+    console.log(`[${idx+1}/${fns.length}] ${ary[7]}, ${ary[8]}, ${fns[idx]} done`);
     const st = fs.statSync(base+fns[idx]);
-    outf.write(`${ary[0]},${ary[1]},${fns[idx]},${st.mtime.toLocaleDateString()},${st.mtime.toLocaleTimeString()}\n`);
+    outf.write(`${ary[7]},${ary[8]},${fns[idx]},${st.mtime.toLocaleDateString()},${st.mtime.toLocaleTimeString()}\n`);
 }
 
 const srcDir = "..\\sample5\\";
