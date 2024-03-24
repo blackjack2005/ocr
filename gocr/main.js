@@ -15,10 +15,15 @@ async function doit(base, fns, idx, outf) {
     rst.end();
     //console.log('Text:');
     //text.forEach(text => console.log(text.description));
-    let ary = text[0].description.split("\n");
-    console.log(`[${idx+1}/${fns.length}] ${ary[7]}, ${ary[8]}, ${fns[idx]} done`);
-    const st = fs.statSync(base+fns[idx]);
-    outf.write(`${ary[7]},${ary[8]},${fns[idx]},${st.mtime.toLocaleDateString()},${st.mtime.toLocaleTimeString()}\n`);
+    let m = /(\d+)\D+(\d+)\D+新紀錄/m.exec(text[0].description);
+    if (m) {
+        console.log(`[${idx+1}/${fns.length}] ${m[1]}, ${m[2]}, ${fns[idx]} done`);
+        const st = fs.statSync(base+fns[idx]);
+        outf.write(`${m[1]},${m[2]},${fns[idx]},${st.mtime.toLocaleDateString()},${st.mtime.toLocaleTimeString()}\n`);
+    } else {
+        console.log(`[${idx+1}/${fns.length}] ${fns[idx]} weird`);
+        outf.write(`${fns[idx]} weird`);
+    }
 }
 
 const srcDir = "..\\sample5\\";
