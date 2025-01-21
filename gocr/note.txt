@@ -9,5 +9,8 @@ https://console.cloud.google.com/welcome/new?hl=zh-tw&project=my-first-ocr-39201
 
 gcloud auth application-default login
 
+gcloud auth application-default set-quota-project my-first-ocr-392012
+> Credentials saved to file: [C:\Users\alexa\AppData\Roaming\gcloud\application_default_credentials.json]
+
 gcloud ml vision detect-text 20220628_094000080_iOS.png
 gcloud ml vision detect-text 20230404_084657661_iOS.png
