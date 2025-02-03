@@ -18,8 +18,9 @@ async function doit(base, fns, idx, outf) {
     let m = /(\d+)\D+(\d+)\D+新紀錄/m.exec(text[0].description);
     if (m) {
         console.log(`[${idx+1}/${fns.length}] ${m[1]}, ${m[2]}, ${fns[idx]} done`);
-        const st = fs.statSync(base+fns[idx]);
-        outf.write(`${m[1]},${m[2]},${fns[idx]},${st.mtime.toLocaleDateString()},${st.mtime.toLocaleTimeString()}\n`);
+        let dt = buildDateTime(fns[idx]);
+    //  const st = fs.statSync(base+fns[idx]);
+        outf.write(`${m[1]},${m[2]},${fns[idx]},${dt.toLocaleDateString()},${dt.toLocaleTimeString()}\n`);
     } else {
         console.log(`[${idx+1}/${fns.length}] ${fns[idx]} weird`);
         outf.write(`${fns[idx]} weird`);
@@ -39,3 +40,8 @@ fs.readdir(srcDir, async(e, files) =>{
         await doit(srcDir, files, i, outf);
     }
 });
+
+function buildDateTime(fn) {
+    let d = /(\d\d\d\d)(\d\d)(\d\d)_(\d\d)(\d\d)(\d\d)(\d\d\d)/.exec(fn);
+    return new Date(Date.UTC(d[1], d[2]-1, d[3], d[4], d[5], d[6], d[7]));
+}
